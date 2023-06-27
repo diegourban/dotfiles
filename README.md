@@ -6,7 +6,7 @@
 
 ## Install
 
-Install config tracking in your $HOME by running:
+Install config tracking in your `$HOME` by running:
 
 ```
 curl -Lks https://raw.githubusercontent.com/diegourban/dotfiles/main/.bin/install.sh | /bin/bash
