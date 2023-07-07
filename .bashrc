@@ -122,6 +122,13 @@ fi
 [[ -f "$HOME/.fig/shell/bashrc.post.bash" ]] && builtin source "$HOME/.fig/shell/bashrc.post.bash"
 
 export NVM_DIR="$HOME/.nvm"
+
+
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 alias config='/usr/bin/git --git-dir=/home/diego/.cfg/ --work-tree=/home/diego'
+
+# Liquibase setup {{{
+export PATH=$HOME/liquibase/liquibase-4.9.1:$PATH
+[ -f $HOME/liquibase/liquibase-4.9.1/lib/liquibase_autocomplete.bash ] && . $HOME/liquibase/liquibase-4.9.1/lib/liquibase_autocomplete.bash
+# }}}
