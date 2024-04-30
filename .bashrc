@@ -133,4 +133,3 @@ export PATH=$HOME/liquibase/liquibase-4.9.1:$PATH
 [ -f $HOME/liquibase/liquibase-4.9.1/lib/liquibase_autocomplete.bash ] && . $HOME/liquibase/liquibase-4.9.1/lib/liquibase_autocomplete.bash
 # }}}
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
