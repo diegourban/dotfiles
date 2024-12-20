@@ -11,10 +11,6 @@ if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
 
-# diegourban/dotfiles related commands {{{
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-# }}}
-
 export PATH="$(brew --prefix)/opt/curl/bin:$PATH"
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
