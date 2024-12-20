@@ -1,5 +1,4 @@
 brew "artillery"
-brew "authzed/tap/zed"
 brew "awscli"
 brew "dive"
 brew "helm"
