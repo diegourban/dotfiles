@@ -7,8 +7,6 @@ alias ll="ls -la"
 # Print my public IP
 alias myip='curl ipinfo.io/ip'
 
-# alias cpaetest="k8cfg <country>-<stage> <cluster> default"
-
 function k8cfg() {
   export AWS_SDK_LOAD_CONFIG=1
   export AWS_PROFILE=$1
