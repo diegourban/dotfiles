@@ -1,3 +1,6 @@
 # This is Git's per-user configuration file.
 [user]
-	name = Diego Leonardo Urban
+	name = "Diego Leonardo Urban"
+
+[includeIf "gitdir:~/Repositories/"]
+    path = ~/Repositories/.gitconfig
