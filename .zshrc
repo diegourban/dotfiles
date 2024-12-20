@@ -1,9 +1,12 @@
 # .zshrc
 # Author: Diego Leonardo Urban
 
+# Function definitions.
+if [ -f ~/.functions ]; then
+    . ~/.functions
+fi
+
 # Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.zsh_aliases, instead of adding them here directly.
 if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
