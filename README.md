@@ -8,10 +8,7 @@
 ## Install
 
 ### 1. Homebrew
-Install Homebrew by running:
-```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
+Install [Homebrew](https://brew.sh/).
 
 ### 2. cURL
 Install cURL via Homebrew by running:
@@ -19,15 +16,8 @@ Install cURL via Homebrew by running:
 brew install curl
 ```
 
-Run the following to make brew cURL the default one in your shell:
-```
-echo 'export PATH="$(brew --prefix)/opt/curl/bin:$PATH"' >> ~/.zshrc
-source ~/.zshrc
-```
-
 ### 3. GIT
-
-Install GIT by running:
+Install GIT via Homebrew by running:
 ```
 brew install git
 ```
@@ -39,9 +29,8 @@ curl -Lks https://raw.githubusercontent.com/diegourban/dotfiles/main/.bin/instal
 ```
 
 ### 5. Software packages
-Install software packages with this command:
+Install software packages in your `$HOME/.bin` by running:
 ```
-cd .bin
 brew bundle install
 ```
 
