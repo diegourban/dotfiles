@@ -26,7 +26,6 @@ cask "postman"
 cask "temurin@11"
 cask "temurin@17"
 cask "temurin@21"
-cask "temurin@8"
 cask "visual-studio-code"
 cask "zoom"
 mas "Slack", id: 803453959
