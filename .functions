@@ -1,4 +1,4 @@
-function k8cfg() {
+function k8scfg() {
   export AWS_SDK_LOAD_CONFIG=1
   export AWS_PROFILE=$1
   AWS_PAGER="" aws sts get-caller-identity || aws sso login
