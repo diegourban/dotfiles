@@ -38,5 +38,12 @@ Install config tracking in your `$HOME` by running:
 curl -Lks https://raw.githubusercontent.com/diegourban/dotfiles/main/.bin/install.zsh | /bin/zsh
 ```
 
+### 5. Software packages
+Install software packages with this command:
+```
+cd .bin
+brew bundle install
+```
+
 ## Reference
 [Dotfiles: Best Way to Store in a Bare Git Repository ](https://www.atlassian.com/git/tutorials/dotfiles)
