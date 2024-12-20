@@ -1,0 +1,7 @@
+function k8cfg() {
+  export AWS_SDK_LOAD_CONFIG=1
+  export AWS_PROFILE=$1
+  AWS_PAGER="" aws sts get-caller-identity || aws sso login
+  aws eks update-kubeconfig --name $2 --alias $2
+  kubectl config set-context --current --namespace=$3
+}
