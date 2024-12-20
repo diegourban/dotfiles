@@ -1,6 +1,10 @@
 # Aliases
 # alias alias_name="command_to_run"
 
+# diegourban/dotfiles related commands {{{
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+# }}}
+
 # Long format list
 alias ll="ls -la"
 
