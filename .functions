@@ -1,3 +1,14 @@
+# Function: k8scfg
+# Purpose: Configure AWS CLI credentials, update kubeconfig for an EKS cluster,
+#          and set the Kubernetes namespace for the current context.
+#
+# Arguments:
+#   $1 - AWS Profile (string): The AWS CLI profile to use for authentication.
+#   $2 - EKS Cluster Name (string): The name of the EKS cluster to update kubeconfig for.
+#   $3 - Kubernetes Namespace (string): The namespace to set for the current kubectl context.
+#
+# Example Usage:
+# k8scfg my-aws-profile my-cluster-name my-namespace
 function k8scfg() {
   export AWS_SDK_LOAD_CONFIG=1
   export AWS_PROFILE=$1
