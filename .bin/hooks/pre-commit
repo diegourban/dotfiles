@@ -1,0 +1,8 @@
+#!/bin/zsh
+# Pre-commit hook for the dotfiles bare repo (~/.cfg), wired via core.hooksPath.
+# Blocks commits whose staged changes contain secrets. The repo is PUBLIC.
+if ! command -v gitleaks >/dev/null 2>&1; then
+  echo "pre-commit: gitleaks not found (brew install gitleaks); refusing to commit unscanned." >&2
+  exit 1
+fi
+exec gitleaks git --pre-commit --staged --redact --no-banner --config "$HOME/.bin/hooks/gitleaks.toml"

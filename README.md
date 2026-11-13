@@ -1,38 +1,39 @@
 # dotfiles for [@diegourban](https://github.com/diegourban)
 
-## Requirements
-- Homebrew
-- cURL
-- Git
+macOS dotfiles stored in a bare Git repository (`~/.cfg`, work tree `$HOME`), following
+[Atlassian's bare-repo approach](https://www.atlassian.com/git/tutorials/dotfiles).
 
 ## Install
 
-### 1. Homebrew
-Install [Homebrew](https://brew.sh/).
+1. Install Homebrew from [brew.sh](https://brew.sh/). It also installs the Xcode Command Line Tools, which provide `git` and `curl`.
+2. Bootstrap the dotfiles:
+   ```sh
+   curl -fsSL https://raw.githubusercontent.com/diegourban/dotfiles/main/.bin/install.zsh | /bin/zsh
+   ```
+   It clones over HTTPS (no SSH key needed yet), switches `origin` to SSH for later pushes, backs up any
+   file it would overwrite to `~/.config-backup/<timestamp>/`, and runs `brew bundle --file ~/.bin/Brewfile`.
+   It is safe to re-run.
+3. Create the machine-local files (never committed):
 
-### 2. cURL
-Install cURL via Homebrew by running:
-```
-brew install curl
-```
+   | File | Sourced by | Holds |
+   |---|---|---|
+   | `~/.zshrc.local` | `~/.zshrc` | tokens and secrets as `export`s |
+   | `~/.aliases.local` | `~/.aliases` | work-specific aliases |
+   | `~/.gitconfig.local` | `~/.gitconfig` | machine-local git settings |
 
-### 3. GIT
-Install GIT via Homebrew by running:
-```
-brew install git
-```
+## Daily use
 
-### 4. Config
-Install config tracking in your `$HOME` by running:
-```
-curl -Lks https://raw.githubusercontent.com/diegourban/dotfiles/main/.bin/install.zsh | /bin/zsh
-```
-
-### 5. Software packages
-Install software packages in your `$HOME/.bin` by running:
-```
-brew bundle install
+```sh
+config status                 # what changed (untracked files are hidden on purpose)
+config add ~/.zshrc && config commit -m "..." && config push
+config add ~/.some/new/file   # start tracking a file
 ```
 
-## Reference
-[Dotfiles: Best Way to Store in a Bare Git Repository ](https://www.atlassian.com/git/tutorials/dotfiles)
+## Conventions
+
+- **The repo is public.** No secrets, tokens, or employer-specific config in tracked files; those go in the `*.local` files.
+  A `gitleaks` pre-commit hook (`~/.bin/hooks/`, wired via `core.hooksPath`) blocks commits that contain secrets.
+- **Git identity is per directory.** The global `.gitconfig` has no `user.email` and sets `user.useConfigOnly`, so
+  git refuses to commit unless an `includeIf` block (or a repo-local `user.email`) provides one.
+- **Java** comes from the Temurin casks; switch with `jdk 17` / `jdk 25` (no argument lists installed JDKs).
+- **Brewfile drift:** `brew bundle cleanup --file ~/.bin/Brewfile` lists what is installed but not tracked.

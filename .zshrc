@@ -1,16 +1,25 @@
 # .zshrc
 # Author: Diego Leonardo Urban
+# Login-shell setup (Homebrew, PATH from installers) lives in ~/.zprofile.
 
 # Function definitions.
-if [ -f ~/.functions ]; then
-    . ~/.functions
-fi
+[[ -f ~/.functions ]] && . ~/.functions
 
 # Alias definitions.
-if [ -f ~/.aliases ]; then
-    . ~/.aliases
-fi
+[[ -f ~/.aliases ]] && . ~/.aliases
 
-export PATH="$(brew --prefix)/opt/curl/bin:$PATH"
-export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
-export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
+# Homebrew keg-only tools ($HOMEBREW_PREFIX is set by `brew shellenv` in ~/.zprofile).
+export PATH="$HOMEBREW_PREFIX/opt/curl/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/mysql-client/bin:$PATH"
+
+# Java: Temurin casks, switched with `jdk <version>` (see ~/.functions).
+jdk 25 >/dev/null
+
+# Go: binaries installed with `go install` (incl. golang.org/dl toolchains).
+export PATH="$PATH:$HOME/go/bin"
+
+# Postman CLI.
+export PATH="$HOME/.local/bin:$PATH"
+
+# Machine-local secrets and overrides (untracked, never commit).
+[[ -f ~/.zshrc.local ]] && . ~/.zshrc.local
