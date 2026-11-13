@@ -11,8 +11,5 @@ alias ll="ls -la"
 # Print my public IP
 alias myip='curl ipinfo.io/ip'
 
-# Personal Claude Code account (isolated config + macOS Keychain entry, separate from default ~/.claude work profile)
-alias claude-personal='CLAUDE_CONFIG_DIR=~/.claude-personal claude'
-
 # Machine-local / work aliases (untracked, never commit).
 [[ -f ~/.aliases.local ]] && . ~/.aliases.local
