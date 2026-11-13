@@ -16,3 +16,28 @@ function k8scfg() {
   aws eks update-kubeconfig --name $2 --alias $2
   kubectl config set-context --current --namespace=$3
 }
+
+# Function: jdk
+# Purpose: Switch JAVA_HOME (and PATH) to an installed JDK using macOS java_home.
+#
+# Arguments:
+#   $1 - Java version (string): e.g. 17, 21, 25. No argument lists installed JDKs.
+#
+# Example Usage:
+# jdk 17
+function jdk() {
+  if [[ -z $1 ]]; then
+    /usr/libexec/java_home -V
+    return
+  fi
+  local home
+  home=$(/usr/libexec/java_home -v "$1" 2>/dev/null) || {
+    echo "jdk: version $1 not installed" >&2
+    /usr/libexec/java_home -V
+    return 1
+  }
+  [[ -n $JAVA_HOME ]] && path=(${path:#$JAVA_HOME/bin})
+  export JAVA_HOME=$home
+  path=($JAVA_HOME/bin $path)
+  java -version 2>&1 | head -1
+}
