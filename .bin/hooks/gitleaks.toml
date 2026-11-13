@@ -1,0 +1,15 @@
+# gitleaks config for the dotfiles pre-commit hook: default rules + gaps found in practice.
+[extend]
+useDefault = true
+
+[[rules]]
+id = "datadog-personal-access-token"
+description = "Datadog personal access token (ddpat_...)"
+regex = '''\bddpat_[A-Za-z0-9_-]{30,}'''
+keywords = ["ddpat_"]
+
+[[rules]]
+id = "shell-export-secret"
+description = "Shell export of a secret-looking variable with a long literal value"
+regex = '''export\s+[A-Za-z0-9_]*(TOKEN|SECRET|PASSWORD|PASSWD|_PAT|API_KEY|APIKEY)\s*=\s*["']?[^\s"'$]{16,}'''
+keywords = ["export"]
