@@ -15,6 +15,8 @@ if [[ ! -d "$CFG" ]]; then
   /usr/bin/git clone --bare "$REPO_HTTPS" "$CFG"
 fi
 config remote set-url origin "$REPO_SSH"
+# A bare clone has no fetch refspec, so origin/* branches would never exist.
+config config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 config config status.showUntrackedFiles no
 config config core.hooksPath "$HOME/.bin/hooks"
 config config user.email "diego.urban88@gmail.com"
