@@ -1,6 +1,20 @@
 # This is Git's per-user configuration file.
 [user]
 	name = "Diego Leonardo Urban"
+	# No global email on purpose: identity comes from the includeIf blocks below
+	# (or a repo-local user.email), and git refuses to commit anywhere else.
+	useConfigOnly = true
 
-[includeIf "gitdir:~/Repositories/"]
-    path = ~/Repositories/.gitconfig
+[includeIf "gitdir:~/Repositories/github.com/team-carepay/"]
+	path = ~/Repositories/.gitconfig-work
+[includeIf "gitdir:~/Repositories/bitbucket.org/carepaydev/"]
+	path = ~/Repositories/.gitconfig-work
+[includeIf "gitdir:~/Repositories/github.com/diegourban/"]
+	path = ~/Repositories/.gitconfig-personal
+
+[core]
+	autocrlf = input
+
+# Machine-local config and secrets (untracked, never commit).
+[include]
+	path = ~/.gitconfig.local
